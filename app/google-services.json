@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "861503311536",
+    "firebase_url": "https://custmatev2---urban-vikas.firebaseio.com",
+    "project_id": "custmatev2---urban-vikas",
+    "storage_bucket": "custmatev2---urban-vikas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861503311536:android:4f302c972dfa1056e37575",
+        "android_client_info": {
+          "package_name": "com.finwin.cristal.custmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861503311536-u4n06udpmmiorhmpi2li11a2v0mrdplj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finwin.cristal.custmate",
+            "certificate_hash": "992b3e95c46d99a1ae92cfe4210ffe0da47d20e1"
+          }
+        },
+        {
+          "client_id": "861503311536-9r51hpjbmdeqlnb9vi9nqim3e08kavbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDceeWtOyMSG_-zuieetKWP9GTgZ5yjI2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861503311536-9r51hpjbmdeqlnb9vi9nqim3e08kavbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<color name="colorPrimary">#00A6B6</color>-->
+    <!--<color name="colorPrimaryDark">#00A6B6</color>-->
+    <!--<color name="colorAccent">#19a6a3</color>-->
+    <!--<color name="bg_blue">#00A6B6</color>-->
+    <!--<color name="bg_edittext">#0894a1</color>-->
+
+    <!--<color name="colorPrimary">#8145FD</color>-->
+    <!--<color name="colorPrimaryDark">#8145FD</color>-->
+    <!--<color name="colorAccent">#8145FD</color>-->
+    <!--<color name="bg_blue">#8145FD</color>-->
+
+    <!--<color name="colorPrimary">#C24EFB</color>-->
+    <!--<color name="colorPrimaryDark">#A54DF1</color>-->
+    <!--&lt;!&ndash;<color name="colorPrimaryDark">#A54DF1</color>&ndash;&gt;-->
+    <!--<color name="colorAccent">#8145FD</color>-->
+    <!--<color name="bg_blue">#8145FD</color>-->
+
+<!--    <color name="colorPrimary">#2f3185</color>-->
+<!--    <color name="colorPrimaryDark">#2f3185</color>-->
+<!--    <color name="colorAccent">#2f3185</color>-->
+<!--    <color name="bg_blue">#2f3185</color>-->
+
+    //for urban vikas
+    <color name="colorPrimary">#F36368</color>
+    <color name="colorPrimaryLight">#EDA6A9</color>
+    <color name="colorPrimaryDark">#d12026</color>
+    <color name="colorAccent">#d12026</color>
+    <color name="bg_blue">#0B8103</color>
+
+
+<!--    //for mythri-->
+<!--    <color name="colorPrimary">#C70EFF</color>-->
+<!--    <color name="colorPrimaryDark">#C70EFF</color>-->
+<!--    <color name="colorAccent">#C70EFF</color>-->
+<!--    <color name="bg_blue">#C70EFF</color>-->
+
+    <!--<color name="colorAccent">#6B15A0</color>-->
+
+    <!--<color name="colorPrimaryDark">#5320AD</color>-->
+
+    <color name="white">#ffffff</color>
+    <color name="black_txt">#222426</color>
+    <color name="transparent">#00000000</color>
+    <color name="bg_textgrey">#8Cffffff</color>
+
+    <color name="greyTxt_dark">#595e62</color>
+    <color name="geryTxt">#858585</color>
+    <color name="geryTxt_hint">#e0e2e6</color>
+    <color name="tab_unselect_txt">#a9a9aa</color>
+    <color name="grey">#bbbbbb</color>
+    <color name="grey_two">#b2b9c6</color>
+    <color name="grey_three">#e2e3e4</color>
+
+    <color name="text_red">#bc2626</color>
+    <color name="text_green">#39912b</color>
+    <color name="green">#28a644</color>
+    <color name="orange">#ffa620</color>
+    <color name="green_light">#47d51e</color>
+
+    <!--<color name="colorPrimary">#5B5999</color>-->
+    <!--<color name="colorPrimaryDark">#5B5999</color>-->
+    <!--<color name="colorAccent">#5B5999</color>-->
+    <!--<color name="bg_blue">#5B5999</color>-->
+
+    <!--<color name="colorPrimary">#00A6B6</color>-->
+    <!--<color name="colorPrimaryDark">#00A6B6</color>-->
+    <!--<color name="colorAccent">#19a6a3</color>-->
+    <!--<color name="bg_blue">#00A6B6</color>-->
+    <!--<color name="bg_edittext">#0894a1</color>-->
+
+    <!--<color name="colorPrimary">#00E7E1</color>-->
+    <!--<color name="colorPrimaryDark">#00CFCA</color>-->
+    <!--<color name="colorAccent">#00CFCA</color>-->
+
+</resources>

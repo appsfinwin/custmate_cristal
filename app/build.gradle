@@ -1,0 +1,139 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.finwin.cristal.custmate"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 5
+        versionName "1.3"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi 25
+        renderscriptSupportModeEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+
+        dataBinding true
+
+        // for view binding:
+        // viewBinding true
+    }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'AP_KE', App_ap
+        it.buildConfigField 'String', 'AP_SR', App_sr
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.roughike:bottom-bar:2.3.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:27.1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.romainpiel.shimmer:library:1.4.0@aar'//text
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.1'
+    implementation 'com.scottyab:aescrypt:0.0.1'//encryption
+    implementation 'com.auth0:java-jwt:3.3.0'
+    implementation 'io.jsonwebtoken:jjwt:0.9.0'
+    implementation 'com.google.code.gson:gson:2.8.1'
+
+    implementation 'com.github.dimorinny:floating-text-button:0.0.4'//floating button
+    implementation 'com.github.f0ris.sweetalert:library:1.5.1'//sweetalert Dialogue
+    implementation 'com.brouding:android-simple-dialog:0.3.1'//dialog
+    implementation 'com.github.SubhrajyotiSen:library:1.1.2'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.16'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+//    implementation 'com.github.dimorinny:floating-text-button:0.0.4'
+
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'//toggle
+    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.1'//QR Reader
+    implementation 'com.github.kenglxn.QRGen:javase:2.2.0'//QR Gen
+    implementation 'online.devliving:passcodeview:1.0.3'
+//    implementation 'com.hanks:passcodeview:0.1.2'
+
+
+    def lifecycle_version = "2.2.0"
+    def arch_version = "2.1.0"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+
+    // Annotation processor
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    // optional - helpers for implementing LifecycleOwner in a Service
+    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
+
+    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
+    // optional - ReactiveStreams support for LiveData
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+
+    // optional - Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:$arch_version"
+
+    //rxjava and retrofit
+
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
+
+
+
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
+
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+
+
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
+
+    // Recommended: Add the Google Analytics SDK.
+    implementation 'com.google.firebase:firebase-analytics:17.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'org.jsoup:jsoup:1.8.3'
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+}

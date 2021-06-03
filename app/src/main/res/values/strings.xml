@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Cristal Nidhi</string>
+    <string name="rs">₹</string>
+    <string name="Blnc_enqry">Balance Enquiry</string>
+    <string name="Mini_stmnt">Mini Statement</string>
+    <string name="Fund_transfer">Fund Transfer</string>
+    <string name="recharges_amp_pay_bills"><![CDATA[Recharges & Others ]]></string>
+
+    <string name="sign_up">SIGN UP</string>
+
+    <string name="account_info">Account info</string>
+    <string name="transaction_id">Transaction ID</string>
+    <string name="transacted_on">Transaction on</string>
+    <string name="debited_from">Debited from</string>
+    <string name="credit_to">Credit To</string>
+    <string name="successful">Successful</string>
+
+    <string name="home">Home</string>
+    <string name="enquiry">Enquiry</string>
+    <string name="e_shopping">Scan &amp; pay</string>
+    <string name="scan_pay">Scan &amp; pay</string>
+    <string name="fund_transfer">Transfer</string>
+    <string name="profile">Profile</string>
+    <string name="scn_qrcod">Scan this QR-CODE for instant Money Transfer</string>
+
+    <string name="name">Name</string>
+    <string name="email">E-mail</string>
+    <string name="accno">A/c No</string>
+    <string name="mob">Mobile</string>
+    <string name="change_acc">A/C</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="change_mpin">Change MPIN</string>
+
+    <string name="balance_enquiry">Balance Enquiry</string>
+    <string name="acc_balance">Acc Balance</string>
+    <string name="amount">Amount</string>
+    <string name="amount_to_trsfr">Amount to Be Transferred</string>
+    <string name="mini_statmnt">Mini Statement</string>
+
+    <string name="recharge">RECHARGE</string>
+    <string name="mob_recharge">Mobile Recharge</string>
+    <string name="data_recharge">DataCard Recharge</string>
+    <string name="lndbill_pymnt">Landline bill payment</string>
+    <string name="Broadbill_pymnt">Broadband bill payment</string>
+
+    <string name="add_new_benfcry">ADD NEW BENEFICIARY</string>
+    <string name="loan">LOAN</string>
+
+    <string name="rqst_otp">Request OTP</string>
+    <string name="neft_otp">Type OTP</string>
+    <string name="acc_trns">ACC TRANSFER</string>
+    <string name="neft_trns">NEFT / IMPS / RTGS Transfer</string>
+    <string name="neft_benf">Add Beneficiary</string>
+    <string name="acc_no">Acc No</string>
+
+
+</resources>

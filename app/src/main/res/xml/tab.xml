@@ -1,0 +1,36 @@
+<tabs>
+    <tab
+        activeColor="@color/colorAccent"
+        icon="@drawable/home"
+        id="@+id/home"
+        inActiveColor="@color/tab_unselect_txt"
+        title="@string/home" />
+
+    <!--<tab-->
+        <!--activeColor="@color/colorPrimaryDark"-->
+        <!--icon="@drawable/offers"-->
+        <!--id="@+id/search"-->
+        <!--inActiveColor="@color/tab_unselect_txt"-->
+        <!--title="@string/enquiry" />-->
+
+    <tab
+        activeColor="@color/colorAccent"
+        icon="@drawable/scan_and_pay"
+        id="@+id/tickets"
+        inActiveColor="@color/tab_unselect_txt"
+        title="@string/e_shopping" />
+
+    <!--<tab-->
+        <!--activeColor="@color/colorPrimaryDark"-->
+        <!--icon="@drawable/transactions"-->
+        <!--id="@+id/profilee"-->
+        <!--inActiveColor="@color/tab_unselect_txt"-->
+        <!--title="@string/fund_transfer" />-->
+
+    <tab
+        activeColor="@color/colorAccent"
+        icon="@drawable/account"
+        id="@+id/profile"
+        inActiveColor="@color/tab_unselect_txt"
+        title="@string/profile" />
+</tabs>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="11.3dp">
+
+        <ImageView
+            android:id="@+id/iconImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp" />
+        <!--android:src="@drawable/mobile_1"-->
+
+        <TextView
+            android:id="@+id/list_trans_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="14dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:text="Type"
+            android:textColor="@color/black_txt"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/list_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="end"
+            android:text="50"
+            android:textColor="@color/black_txt"
+            android:textSize="18.3sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/list_dorc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="end"
+            android:text="-"
+            android:textColor="@color/black_txt"
+            android:textSize="18.3sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:paddingStart="53.7dp"
+            android:text="Trans. ID # "
+            android:textColor="@color/geryTxt"
+            android:textSize="11.7sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/list_transid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="transid"
+            android:textColor="@color/geryTxt"
+            android:textSize="11.7sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:paddingStart="53.7dp"
+            android:text="Trans. Date - "
+            android:textColor="@color/geryTxt"
+            android:textSize="11.7sp"
+            android:textStyle="normal" />
+        <TextView
+            android:id="@+id/list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="date"
+            android:textColor="@color/geryTxt"
+            android:textSize="11.7sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="5dp"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:text="current balance :"-->
+            <!--android:textColor="@color/grey"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textStyle="normal" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:paddingStart="53.7dp"
+            android:text="Current Balance :"
+            android:textColor="@color/geryTxt"
+            android:textSize="12.7sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/list_blnce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="blnc"
+            android:textColor="@color/black_txt"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <ImageView
+            android:id="@+id/debitLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="4.3dp"
+            android:paddingRight="20dp" />
+        <!--android:src="@drawable/visa"-->
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="9.3dp"
+        android:background="#f4f4f4" />
+
+</LinearLayout>

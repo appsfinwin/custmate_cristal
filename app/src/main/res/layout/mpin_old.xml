@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<online.devliving.passcodeview.PasscodeView
+    android:id="@+id/passcodeView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"/>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="30dp" />-->
+
+    <!--&lt;!&ndash;<online.devliving.passcodeview.PasscodeView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/passcode_view"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_gravity="center_horizontal"&ndash;&gt;-->
+    <!--&lt;!&ndash;passcodeView:digitColorFilled="@color/colorPrimary"&ndash;&gt;-->
+    <!--&lt;!&ndash;passcodeView:digitRadius="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;passcodeView:numDigits="6" />&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<com.andrognito.pinlockview.IndicatorDots&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/indicator_dots"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerHorizontal="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="36dp" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<com.andrognito.pinlockview.PinLockView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/pin_lock_view"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_below="@id/indicator_dots"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerHorizontal="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="16dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;app:keypadButtonSize="72dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;app:keypadShowDeleteButton="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;app:keypadTextColor="@color/white"&ndash;&gt;-->
+        <!--&lt;!&ndash;app:keypadTextSize="18dp" />&ndash;&gt;-->
+    <!---->
+<!--</LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>--><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:passcodeView="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:gravity="center"--><!--android:layout_gravity="center">-->
+
+    <!--<online.devliving.passcodeview.PasscodeView--><!--android:id="@+id/passcode_view"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center_horizontal"--><!--passcodeView:digitColorFilled="@color/colorPrimary"--><!--passcodeView:digitRadius="10dp"--><!--passcodeView:numDigits="6" />-->
+
+    <!--&lt;!&ndash;<TextView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/promptview"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:text="Enter your passcode"&ndash;&gt;--><!--&lt;!&ndash;android:textSize="18.0sp"&ndash;&gt;--><!--&lt;!&ndash;android:gravity="center"&ndash;&gt;--><!--&lt;!&ndash;android:padding="20.0dp"&ndash;&gt;--><!--&lt;!&ndash;/>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<in.arjsna.lib.PassCodeView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/pass_code_view"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;app:digits="4"&ndash;&gt;--><!--&lt;!&ndash;app:digit_size="30.0dp"&ndash;&gt;--><!--&lt;!&ndash;app:key_text_size="30.0sp"&ndash;&gt;--><!--&lt;!&ndash;android:padding="25.0dp"&ndash;&gt;--><!--&lt;!&ndash;app:empty_drawable="@drawable/dot_empty"&ndash;&gt;--><!--&lt;!&ndash;app:filled_drawable="@drawable/dot_filled"/>&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<com.github.orangegangsters.lollipin.lib.views.PinCodeRoundView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/pin_code_round_view"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_marginBottom="@dimen/pin_code_elements_margin"&ndash;&gt;--><!--&lt;!&ndash;android:layout_marginTop="@dimen/pin_code_round_top_margin"&ndash;&gt;--><!--&lt;!&ndash;app:lp_empty_pin_dot="@drawable/dot_empty"&ndash;&gt;--><!--&lt;!&ndash;app:lp_full_pin_dot="@drawable/dot_filled" />&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<com.github.orangegangsters.lollipin.lib.views.PinCodeRoundView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/pin_code_round"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_marginBottom="@dimen/pin_code_elements_margin"&ndash;&gt;--><!--&lt;!&ndash;android:layout_marginTop="@dimen/pin_code_round_top_margin"&ndash;&gt;--><!--&lt;!&ndash;app:lp_empty_pin_dot="@drawable/dot_empty"&ndash;&gt;--><!--&lt;!&ndash;app:lp_full_pin_dot="@drawable/dot_filled" />&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<View&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="30dp" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<online.devliving.passcodeview.PasscodeView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/passcode_view"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:layout_gravity="center_horizontal"&ndash;&gt;--><!--&lt;!&ndash;passcodeView:digitRadius="10dp"&ndash;&gt;--><!--&lt;!&ndash;passcodeView:numDigits="6" />&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<in.arjsna.lib.PassCodeView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/pass_code_view"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;--><!--&lt;!&ndash;android:padding="25.0dp"&ndash;&gt;--><!--&lt;!&ndash;app:digit_size="30.0dp"&ndash;&gt;--><!--&lt;!&ndash;app:digits="6"&ndash;&gt;--><!--&lt;!&ndash;app:empty_drawable="@drawable/dot_empty"&ndash;&gt;--><!--&lt;!&ndash;app:filled_drawable="@drawable/dot_filled"&ndash;&gt;--><!--&lt;!&ndash;app:key_text_size="30.0sp" />&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash;<com.hanks.passcodeview.PasscodeView&ndash;&gt;--><!--&lt;!&ndash;android:id="@+id/passcodeView"&ndash;&gt;--><!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;--><!--&lt;!&ndash;android:background="@color/colorPrimary"&ndash;&gt;--><!--&lt;!&ndash;app:firstInputTip="Enter a passcode of 5 digits "&ndash;&gt;--><!--&lt;!&ndash;app:correctStateColor="#71bb4d"&ndash;&gt;--><!--&lt;!&ndash;app:wrongStateColor="#ea2b46"&ndash;&gt;--><!--&lt;!&ndash;app:normalStateColor="#ffffff"&ndash;&gt;--><!--&lt;!&ndash;app:numberTextColor="#222222"&ndash;&gt;--><!--&lt;!&ndash;app:passcodeLength="6"&ndash;&gt;--><!--&lt;!&ndash;app:passcodeViewType="set_passcode"/>&ndash;&gt;-->
+
+    <!--</RelativeLayout>-->
