@@ -27,8 +27,8 @@ public class RetrofitClient {
                     .build();
 
             instance = new Retrofit.Builder()
-                    .baseUrl("http://103.210.40.113/")
-                    //.baseUrl("http://custmatecrystal.digicob.in/")
+                    //.baseUrl("http://103.210.40.113/")
+                    .baseUrl("http://testcustmatecrystal.digicob.in/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)

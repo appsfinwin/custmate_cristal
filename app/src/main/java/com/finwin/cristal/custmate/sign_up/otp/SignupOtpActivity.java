@@ -30,7 +30,9 @@ public class SignupOtpActivity extends AppCompatActivity {
         viewmodel=new ViewModelProvider(this).get(SignupOtpViewmodel.class);
         binding.setViewmodel(viewmodel);
 
-        viewmodel.generateOtp();
+        Intent intent=getIntent();
+        otpId=intent.getStringExtra("otpId");
+        //viewmodel.generateOtp();
 
         viewmodel.getmAction().observe(this, new Observer<SignupOtpAction>() {
             @Override

@@ -13,14 +13,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.finwin.cristal.custmate.AdapterAndModel.Models.GridModel;
 import com.finwin.cristal.custmate.R;
+import com.finwin.cristal.custmate.home.reacharge.RechargeFragment;
 
 import java.util.List;
+
+import static com.finwin.cristal.custmate.SupportingClass.ConstantClass.mstrType;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> {
 
@@ -62,48 +67,49 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.MyViewHolder> 
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 Log.e("onClick: ", String.valueOf(position));
-                Toast.makeText(context, "coming soon", Toast.LENGTH_SHORT).show();
-//                if (position == 0) {
-//                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                    Fragment myFragment = new RechargeFragment();
-//                    bundle.putString(mstrType, "MOB");
-//                    myFragment.setArguments(bundle);
-//                    activity.getSupportFragmentManager().beginTransaction().replace(
-//                            R.id.frame_layout,
-//                            myFragment).addToBackStack(null).commit();
-//                } else if (position == 1) {
-//                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                    Fragment myFragment = new RechargeFragment();
-//                    bundle.putString(mstrType, "DTH");
-//                    myFragment.setArguments(bundle);
-//                    activity.getSupportFragmentManager().beginTransaction().replace(
-//                            R.id.frame_layout,
-//                            myFragment).addToBackStack(null).commit();
-//                } else if (position == 2) {
-//                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                    Fragment myFragment = new RechargeFragment();
-//                    bundle.putString(mstrType, "LAND");
-//                    myFragment.setArguments(bundle);
-//                    activity.getSupportFragmentManager().beginTransaction().replace(
-//                            R.id.frame_layout,
-//                            myFragment).addToBackStack(null).commit();
-//                } else if (position == 3) {
-//                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                    Fragment myFragment = new RechargeFragment();
-//                    bundle.putString(mstrType, "DATA");
-//                    myFragment.setArguments(bundle);
-//                    activity.getSupportFragmentManager().beginTransaction().replace(
-//                            R.id.frame_layout,
-//                            myFragment).addToBackStack(null).commit();
-//                } else if (position == 4) {
-//                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                    Fragment myFragment = new RechargeFragment();
-//                    bundle.putString(mstrType, "LAND_BROAD");
-//                    myFragment.setArguments(bundle);
-//                    activity.getSupportFragmentManager().beginTransaction().replace(
-//                            R.id.frame_layout,
-//                            myFragment).addToBackStack(null).commit();
-//                } else if (position == 5) {
+                //Toast.makeText(context, "coming soon", Toast.LENGTH_SHORT).show();
+                if (position == 0) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new RechargeFragment();
+                    bundle.putString(mstrType, "MOB");
+                    myFragment.setArguments(bundle);
+                    activity.getSupportFragmentManager().beginTransaction().replace(
+                            R.id.frame_layout,
+                            myFragment).addToBackStack(null).commit();
+                } else if (position == 1) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new RechargeFragment();
+                    bundle.putString(mstrType, "DTH");
+                    myFragment.setArguments(bundle);
+                    activity.getSupportFragmentManager().beginTransaction().replace(
+                            R.id.frame_layout,
+                            myFragment).addToBackStack(null).commit();
+                } else if (position == 2) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new RechargeFragment();
+                    bundle.putString(mstrType, "LAND");
+                    myFragment.setArguments(bundle);
+                    activity.getSupportFragmentManager().beginTransaction().replace(
+                            R.id.frame_layout,
+                            myFragment).addToBackStack(null).commit();
+                } else if (position == 3) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new RechargeFragment();
+                    bundle.putString(mstrType, "DATA");
+                    myFragment.setArguments(bundle);
+                    activity.getSupportFragmentManager().beginTransaction().replace(
+                            R.id.frame_layout,
+                            myFragment).addToBackStack(null).commit();
+                } else if (position == 4) {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Fragment myFragment = new RechargeFragment();
+                    bundle.putString(mstrType, "LAND_BROAD");
+                    myFragment.setArguments(bundle);
+                    activity.getSupportFragmentManager().beginTransaction().replace(
+                            R.id.frame_layout,
+                            myFragment).addToBackStack(null).commit();
+                }
+//                else if (position == 5) {
 //                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
 //                    Fragment myFragment = new LoanFragment();
 //                    activity.getSupportFragmentManager().beginTransaction().replace(

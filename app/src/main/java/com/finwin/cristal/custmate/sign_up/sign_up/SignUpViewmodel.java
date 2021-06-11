@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
@@ -16,11 +17,14 @@ import com.finwin.cristal.custmate.SupportingClass.Enc_crypter;
 import com.finwin.cristal.custmate.retrofit.ApiInterface;
 import com.finwin.cristal.custmate.retrofit.RetrofitClient;
 import com.finwin.cristal.custmate.sign_up.sign_up.action.SignupAction;
+import com.finwin.cristal.custmate.utils.Services;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.reactivex.disposables.CompositeDisposable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -65,30 +69,41 @@ public class SignUpViewmodel extends AndroidViewModel {
 
     public void clickSignUp(View view)
     {
-        if ((!obAccountNumber.get().equals("")) &&
-                (!obName.get().equals("")) &&
-                (!obMobile.get().equals("")) &&
-                (!obPassword.get().equals("")) &&
-                (!obConfirmPassword.get().equals(""))&&
-                (obPassword.get().equals(obConfirmPassword.get()))
-        )
         {
+            if (obAccountNumber.get().equals(""))
+            {
+                toast(view.getContext(),"Account number cannot be empty");
+            }else if (obName.get().equals(""))
+            {
+                toast(view.getContext(),"Name cannot be empty");
+            }else if (obMobile.get().equals(""))
+            {
+                toast(view.getContext(),"Phone number cannot be empty");
+            }else if (obPassword.get().equals(""))
+            {
+                toast(view.getContext(),"Please enter password!");
+            }else if (obConfirmPassword.get().equals(""))
+            {
+                toast(view.getContext(),"Please confirm password");
+            }else if (!obPassword.get().equals(obConfirmPassword.get()))
+            {
+                toast(view.getContext(),"Passwords do not match");
+            }
+            else {
+                editor.putString(ConstantClass.accountNumber, obAccountNumber.get());
+                editor.putString(ConstantClass.userName, obName.get());
+                editor.putString(ConstantClass.phoneNumber, obMobile.get());
+                editor.putString(ConstantClass.const_password, obPassword.get());
+                editor.commit();
 
-            editor.putString(ConstantClass.accountNumber, obAccountNumber.get());
-            editor.putString(ConstantClass.userName, obName.get());
-            editor.putString(ConstantClass.phoneNumber, obMobile.get());
-            editor.putString(ConstantClass.const_password, obPassword.get());
-            editor.commit();
-            //ConstantClass.const_accountNumber = obAccountNumber.get();
-            //ConstantClass.const_name = obName.get();
-            //ConstantClass.const_phone = obMobile.get();
-            //ConstantClass.const_password = obPassword.get();
-            signUp();
-
-        }else
-        {
-
+                initLoading(view.getContext());
+                signUp();
+            }
         }
+    }
+
+    private void toast(Context context, String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     private void signUp() {
@@ -112,7 +127,24 @@ public class SignUpViewmodel extends AndroidViewModel {
             apiInterface = RetrofitClient.RetrofitClient().create(ApiInterface.class);
             repository.getAccountHolder(apiInterface,body);
         }
+    public void generateOtp() {
 
+        Map<String, String> params = new HashMap<>();
+        Map<String, String> items = new HashMap<>();
+        items.put("particular", "CUSTMATE_REG");
+        items.put("account_no", obAccountNumber.get());
+        items.put("amount", "0");
+        items.put("agent_id", "0");
+        params.put("data", encr.conRevString(Enc_Utils.enValues(items)));
+
+
+        Map<String, Object> jsonParams = new HashMap<>();
+        String request=(new JSONObject(params)).toString();
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(params)).toString());
+
+        apiInterface = RetrofitClient.RetrofitClient().create(ApiInterface.class);
+        repository.generateOtp(apiInterface, body);
+    }
 
     @Override
     protected void onCleared() {
@@ -130,5 +162,20 @@ public class SignUpViewmodel extends AndroidViewModel {
     {
         mAction.setValue(new SignupAction(SignupAction.CLICK_SIGN_IN));
     }
+
+    SweetAlertDialog loading;
+
+    public void initLoading(Context context) {
+        loading = Services.showProgressDialog(context);
+    }
+
+    public void cancelLoading() {
+        if (loading != null) {
+            loading.cancel();
+            loading = null;
+        }
+    }
+
+
 }
 

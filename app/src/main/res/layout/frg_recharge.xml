@@ -254,7 +254,7 @@
                                 android:hint="Enter your ID/No"
                                 android:imeOptions="actionNext"
                                 android:singleLine="true"
-                                android:text="@{viewmodel.mobileOrId}"
+                                android:text="@={viewmodel.mobileOrId}"
                                 android:inputType="text"
                                 android:textSize="17.3sp" />
 
@@ -290,7 +290,7 @@
                                 android:background="#00000000"
                                 android:hint="0.00"
                                 android:imeOptions="actionDone"
-                                android:text="@{viewmodel.amount}"
+                                android:text="@={viewmodel.amount}"
                                 android:inputType="text"
                                 android:singleLine="true"
                                 android:textSize="17.3sp" />

@@ -3,9 +3,11 @@ package com.finwin.cristal.custmate.sign_up.sign_up;
 import androidx.lifecycle.MutableLiveData;
 
 import com.finwin.cristal.custmate.SupportingClass.Enc_crypter;
+import com.finwin.cristal.custmate.home.transfer.fund_transfer_account.pojo.genarate_otp.GenarateOtpResponse;
 import com.finwin.cristal.custmate.home.transfer.fund_transfer_account.pojo.get_account_holder.GetAccountHolderResponse;
 import com.finwin.cristal.custmate.pojo.Response;
 import com.finwin.cristal.custmate.retrofit.ApiInterface;
+import com.finwin.cristal.custmate.sign_up.otp.action.SignupOtpAction;
 import com.finwin.cristal.custmate.sign_up.sign_up.action.SignupAction;
 import com.finwin.cristal.custmate.sign_up.sign_up.pojo.ApiKeyResponse;
 import com.finwin.cristal.custmate.SupportingClass.Enc_Utils;
@@ -129,6 +131,57 @@ public class SignupRepository {
                             {
                                 String error=getAccountHolderResponse.getAccount().getError();
                                 mAction.setValue(new SignupAction(SignupAction.ACCOUNT_HOLDER_NOT_EXIST,error));
+                            }
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        if (e instanceof SocketTimeoutException)
+                        {
+                            mAction.setValue(new SignupAction(SignupAction.API_ERROR,"Timeout! Please try again later"));
+                        }else if (e instanceof UnknownHostException)
+                        {
+                            mAction.setValue(new SignupAction(SignupAction.API_ERROR,"No Internet"));
+                        }else {
+                            mAction.setValue(new SignupAction(SignupAction.API_ERROR, e.getMessage()));
+                        }
+                    }
+                });
+    }
+
+    public void generateOtp(ApiInterface apiInterface, RequestBody body) {
+        Single<Response> call = apiInterface.generateOtp(body);
+        call.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Response response) {
+
+                        try {
+                            String data= Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            data= Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            Gson gson = new GsonBuilder().create();
+                            GenarateOtpResponse genarateOtpResponse = gson.fromJson(data, GenarateOtpResponse.class);
+
+                            if (genarateOtpResponse.getOtp()!=null)
+                            {
+                                mAction.setValue(new SignupAction(SignupAction.GENERATE_OTP_SUCCESS,genarateOtpResponse));
+                            }
+                            else
+                            {
+                                String error=genarateOtpResponse.getError();
+                                mAction.setValue(new SignupAction(SignupAction.API_ERROR,error));
                             }
 
 

@@ -112,7 +112,8 @@ public class SignupOtpViewmodel extends AndroidViewModel {
         Log.e("Reg items", String.valueOf(items));
 
         params.put("data", encr.conRevString(Enc_Utils.enValues(items)));
-
+        String request=(new JSONObject(items)).toString();
+        String requestEncoded=(new JSONObject(params)).toString();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(params)).toString());
 
         apiInterface = RetrofitClient.RetrofitClient().create(ApiInterface.class);

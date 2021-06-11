@@ -26,6 +26,7 @@ import com.finwin.cristal.custmate.home.reacharge.pojo.get_circle_response.Circl
 import com.finwin.cristal.custmate.home.reacharge.pojo.get_operator_response.OperatorData;
 import com.finwin.cristal.custmate.retrofit.ApiInterface;
 import com.finwin.cristal.custmate.retrofit.RetrofitClient;
+import com.finwin.cristal.custmate.utils.Services;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONObject;
@@ -34,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.reactivex.disposables.CompositeDisposable;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -100,6 +102,18 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
         registry.notifyChange(this, BR.selectedCircle);
     }
 
+    SweetAlertDialog loading;
+
+    public void initLoading(Context context) {
+        loading = Services.showProgressDialog(context);
+    }
+
+    public void cancelLoading() {
+        if (loading != null) {
+            loading.cancel();
+            loading = null;
+        }
+    }
     @Bindable
     public int getSelectedOperator() {
         return selectedOperator;
@@ -231,9 +245,9 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
         }else
         {
 
-            Toast.makeText(application, "Recharge not available right now!", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(application, "Recharge not available right now!", Toast.LENGTH_SHORT).show();
 
-            //mAction.setValue(new RechargeAction(RechargeAction.CLICK_PROCEED));
+            mAction.setValue(new RechargeAction(RechargeAction.CLICK_PROCEED));
         }
 
     }

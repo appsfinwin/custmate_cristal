@@ -26,13 +26,12 @@ import io.reactivex.schedulers.Schedulers;
 import okhttp3.RequestBody;
 
 public class RechargeRepository {
-    
+
     public static RechargeRepository instance;
-    public static RechargeRepository getInstance()
-    {
-        if (instance==null)
-        {
-            instance=new RechargeRepository();
+
+    public static RechargeRepository getInstance() {
+        if (instance == null) {
+            instance = new RechargeRepository();
         }
         return instance;
     }
@@ -71,19 +70,16 @@ public class RechargeRepository {
                     public void onSuccess(Response response) {
 
                         try {
-                            String data= Enc_Utils.decValues(encr.revDecString(response.getData()));
-                            data= Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            String data = Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            data = Enc_Utils.decValues(encr.revDecString(response.getData()));
                             Gson gson = new GsonBuilder().create();
                             GetOperatorResponse getOperatorResponse = gson.fromJson(data, GetOperatorResponse.class);
 
-                            if (getOperatorResponse.getData()!=null)
-                            {
-                                mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_SUCCESS,getOperatorResponse));
-                            }
-                            else
-                            {
-                                String error=getOperatorResponse.getMsg();
-                                mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR,error));
+                            if (getOperatorResponse.getData() != null) {
+                                mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_SUCCESS, getOperatorResponse));
+                            } else {
+                                String error = getOperatorResponse.getMsg();
+                                mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR, error));
                             }
 
 
@@ -95,13 +91,11 @@ public class RechargeRepository {
                     @Override
                     public void onError(Throwable e) {
 
-                        if (e instanceof SocketTimeoutException)
-                        {
-                            mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR,"Timeout! Please try again later"));
-                        }else if (e instanceof UnknownHostException)
-                        {
-                            mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR,"No Internet"));
-                        }else {
+                        if (e instanceof SocketTimeoutException) {
+                            mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR, "Timeout! Please try again later"));
+                        } else if (e instanceof UnknownHostException) {
+                            mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR, "No Internet"));
+                        } else {
                             mAction.setValue(new RechargeAction(RechargeAction.GET_OPERATOR_ERROR, e.getMessage()));
                         }
                     }
@@ -122,19 +116,16 @@ public class RechargeRepository {
                     public void onSuccess(Response response) {
 
                         try {
-                            String data= Enc_Utils.decValues(encr.revDecString(response.getData()));
-                            data= Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            String data = Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            data = Enc_Utils.decValues(encr.revDecString(response.getData()));
                             Gson gson = new GsonBuilder().create();
                             GetCircleResponse circleResponse = gson.fromJson(data, GetCircleResponse.class);
 
-                            if (circleResponse.getData()!=null)
-                            {
-                                mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_SUCCESS,circleResponse));
-                            }
-                            else
-                            {
+                            if (circleResponse.getData() != null) {
+                                mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_SUCCESS, circleResponse));
+                            } else {
                                 //String error=getAccountHolderResponse.getAccount().getError();
-                                mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR,"error"));
+                                mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR, "error"));
                             }
 
 
@@ -146,13 +137,11 @@ public class RechargeRepository {
                     @Override
                     public void onError(Throwable e) {
 
-                        if (e instanceof SocketTimeoutException)
-                        {
-                            mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR,"Timeout! Please try again later"));
-                        }else if (e instanceof UnknownHostException)
-                        {
-                            mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR,"No Internet"));
-                        }else {
+                        if (e instanceof SocketTimeoutException) {
+                            mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR, "Timeout! Please try again later"));
+                        } else if (e instanceof UnknownHostException) {
+                            mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR, "No Internet"));
+                        } else {
                             mAction.setValue(new RechargeAction(RechargeAction.GET_CIRCLE_ERROR, e.getMessage()));
                         }
                     }
@@ -202,7 +191,7 @@ public class RechargeRepository {
                 });
     }
 
-        public void recharge(ApiInterface apiInterface, RequestBody body) {
+    public void recharge(ApiInterface apiInterface, RequestBody body) {
         Single<Response> call = apiInterface.recharge(body);
         call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -216,17 +205,15 @@ public class RechargeRepository {
                     public void onSuccess(Response response) {
 
                         try {
-                            String data= Enc_Utils.decValues(encr.revDecString(response.getData()));
-                            data= Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            String data = Enc_Utils.decValues(encr.revDecString(response.getData()));
+                            data = Enc_Utils.decValues(encr.revDecString(response.getData()));
                             Gson gson = new GsonBuilder().create();
                             RechargeResponse rechargeResponse = gson.fromJson(data, RechargeResponse.class);
-                            if (rechargeResponse.getStatus().equals("1"))
-                            {
-                                mAction.setValue(new RechargeAction(RechargeAction.RECHARGE_SUCCESS,rechargeResponse));
-                            }else {
-                                mAction.setValue(new RechargeAction(RechargeAction.RECHARGE_ERROR,rechargeResponse.getMsg()));
+                            if (rechargeResponse.getStatus().equals("1")) {
+                                mAction.setValue(new RechargeAction(RechargeAction.RECHARGE_SUCCESS, rechargeResponse));
+                            } else {
+                                mAction.setValue(new RechargeAction(RechargeAction.RECHARGE_ERROR, rechargeResponse.getMsg()));
                             }
-
 
 
                         } catch (Exception e) {
@@ -237,13 +224,11 @@ public class RechargeRepository {
                     @Override
                     public void onError(Throwable e) {
 
-                        if (e instanceof SocketTimeoutException)
-                        {
-                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR,"Timeout! Please try again later"));
-                        }else if (e instanceof UnknownHostException)
-                        {
-                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR,"No Internet"));
-                        }else {
+                        if (e instanceof SocketTimeoutException) {
+                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR, "Timeout! Please try again later"));
+                        } else if (e instanceof UnknownHostException) {
+                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR, "No Internet"));
+                        } else {
                             mAction.setValue(new RechargeAction(RechargeAction.API_ERROR, e.getMessage()));
                         }
                     }

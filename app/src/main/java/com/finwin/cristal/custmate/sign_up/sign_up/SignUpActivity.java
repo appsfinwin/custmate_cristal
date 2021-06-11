@@ -24,19 +24,20 @@ public class SignUpActivity extends AppCompatActivity {
     ActivitySignupMainBinding binding;
     final Enc_crypter encr = new Enc_crypter();
     String apiKeyStored;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding= DataBindingUtil.setContentView(this, R.layout.activity_signup_main);
-        viewmodel=new ViewModelProvider(this).get(SignUpViewmodel.class);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_signup_main);
+        viewmodel = new ViewModelProvider(this).get(SignUpViewmodel.class);
         binding.setViewmodel(viewmodel);
 
         viewmodel.getmAction().observe(this, new Observer<SignupAction>() {
             @Override
             public void onChanged(SignupAction signupAction) {
-                switch (signupAction.getAction())
-                {
+                viewmodel.cancelLoading();
+                switch (signupAction.getAction()) {
                     case SignupAction.ACCOUNT_HOLDER_EXIST:
 //                        ConstantClass.const_accountNumber = signupAction.getAccountHolderResponse.getAccount().getData().getAccountNumber();
 //                        ConstantClass.const_name = signupAction.getAccountHolderResponse.getAccount().getData().getName();
@@ -46,35 +47,38 @@ public class SignUpActivity extends AppCompatActivity {
                         viewmodel.getApiKey();
                         break;
 
-                        case SignupAction.ACCOUNT_HOLDER_NOT_EXIST:
+                    case SignupAction.ACCOUNT_HOLDER_NOT_EXIST:
 
-                            Toast.makeText(SignUpActivity.this, "Account does not exists", Toast.LENGTH_SHORT).show();
-                            break;
+                        Toast.makeText(SignUpActivity.this, "Account does not exists", Toast.LENGTH_SHORT).show();
+                        break;
 
-                            case SignupAction.API_KEY_SUCCESS:
-                                apiKeyStored = encr.revDecString(encr.decrypter(BuildConfig.AP_KE));
-                                if (apiKeyStored.equals(signupAction.getError()))
-                                {
-                                    Intent intent=new Intent(SignUpActivity.this, SignupOtpActivity.class);
-                                    startActivity(intent);
-                                }
-                                break;
+                    case SignupAction.API_KEY_SUCCESS:
+                        apiKeyStored = encr.revDecString(encr.decrypter(BuildConfig.AP_KE));
+                        if (apiKeyStored.equals(signupAction.getError())) {
+                            viewmodel.initLoading(SignUpActivity.this);
+                            viewmodel.generateOtp();
+                        }
+                        break;
 
-                                case SignupAction.CLICK_SIGN_IN:
-                                    finish();
-                                    break;
+                    case SignupAction.CLICK_SIGN_IN:
+                        finish();
+                        break;
 
+                    case SignupAction.GENERATE_OTP_SUCCESS:
+                        Intent intent = new Intent(SignUpActivity.this, SignupOtpActivity.class);
+                        intent.putExtra("otpId",signupAction.getGenarateOtpResponse().getOtp().getOtpId());
+                        startActivity(intent);
+                        break;
+                    case SignupAction.API_ERROR:
+
+                        Toast.makeText(SignUpActivity.this, signupAction.getError(), Toast.LENGTH_SHORT).show();
+                        break;
                 }
             }
         });
 
 
     }
-
-
-
-
-
 
 
 }

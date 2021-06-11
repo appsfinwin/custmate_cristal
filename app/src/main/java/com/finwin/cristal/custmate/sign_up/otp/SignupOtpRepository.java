@@ -143,12 +143,12 @@ public class SignupOtpRepository {
 
                         if (e instanceof SocketTimeoutException)
                         {
-                            mAction.setValue(new SignupOtpAction(SignupOtpAction.API_ERROR,"Timeout! Please try again later"));
+                            mAction.setValue(new SignupOtpAction(SignupOtpAction.SIGNUP_ERROR,"Timeout! Please try again later"));
                         }else if (e instanceof UnknownHostException)
                         {
-                            mAction.setValue(new SignupOtpAction(SignupOtpAction.API_ERROR,"No Internet"));
+                            mAction.setValue(new SignupOtpAction(SignupOtpAction.SIGNUP_ERROR,"No Internet"));
                         }else {
-                            mAction.setValue(new SignupOtpAction(SignupOtpAction.API_ERROR, e.getMessage()));
+                            mAction.setValue(new SignupOtpAction(SignupOtpAction.SIGNUP_ERROR, e.getMessage()));
                         }
                     }
                 });

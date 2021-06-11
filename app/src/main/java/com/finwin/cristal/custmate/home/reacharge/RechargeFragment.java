@@ -35,6 +35,7 @@ import com.finwin.cristal.custmate.R;
 import com.finwin.cristal.custmate.SupportingClass.ConstantClass;
 import com.finwin.cristal.custmate.SupportingClass.Enc_Utils;
 import com.finwin.cristal.custmate.SupportingClass.Enc_crypter;
+
 import com.finwin.cristal.custmate.databinding.FrgRechargeBinding;
 import com.finwin.cristal.custmate.home.reacharge.action.RechargeAction;
 
@@ -156,6 +157,7 @@ public class RechargeFragment extends Fragment {
         viewmodel.getmAction().observe(getViewLifecycleOwner(), new Observer<RechargeAction>() {
             @Override
             public void onChanged(RechargeAction rechargeAction) {
+                viewmodel.cancelLoading();
                 switch (rechargeAction.getAction()) {
                     case RechargeAction.GET_CIRCLE_SUCCESS:
                         viewmodel.setCircleData(rechargeAction.getCircleResponse.getData());
@@ -171,6 +173,7 @@ public class RechargeFragment extends Fragment {
                     case RechargeAction.VALIDATE_MPIN_SUCCESS:
                         if (rechargeAction.validateMpinResponse.getValue()) {
                             mpinDialog.dismiss();
+                            viewmodel.initLoading(getActivity());
                             viewmodel.recharge();
                         } else {
                             Toast.makeText(getActivity(), "Invalid MPIN", Toast.LENGTH_SHORT).show();
@@ -194,6 +197,8 @@ public class RechargeFragment extends Fragment {
                         break;
 
                     case RechargeAction.RECHARGE_ERROR:
+
+                    case RechargeAction.API_ERROR:
                         new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Error!")
                                 .setContentText(rechargeAction.getError())
