@@ -3,6 +3,7 @@ package com.finwin.cristal.custmate.home.reacharge.action;
 import com.finwin.cristal.custmate.home.reacharge.pojo.RechargeResponse;
 import com.finwin.cristal.custmate.home.reacharge.pojo.get_circle_response.GetCircleResponse;
 import com.finwin.cristal.custmate.home.reacharge.pojo.get_operator_response.GetOperatorResponse;
+import com.finwin.cristal.custmate.home.transfer.fund_transfer_account.pojo.genarate_otp.GenarateOtpResponse;
 import com.finwin.cristal.custmate.home.transfer.fund_transfer_account.pojo.validate_mpin.ValidateMpinResponse;
 
 public class RechargeAction {
@@ -18,12 +19,19 @@ public class RechargeAction {
     public static final int  RECHARGE_SUCCESS=9;
     public static final int  RECHARGE_ERROR=10;
     public static final int  CLICK_PROCEED=11;
+    public static final int  GENERATE_OTP_SUCCESS=12;
     public int action;
     String error;
     public GetCircleResponse getCircleResponse;
     public GetOperatorResponse getOperatorResponse;
     public ValidateMpinResponse validateMpinResponse;
     public RechargeResponse rechargeResponse;
+    public GenarateOtpResponse genarateOtpResponse;
+
+    public RechargeAction(int action, GenarateOtpResponse genarateOtpResponse) {
+        this.action = action;
+        this.genarateOtpResponse = genarateOtpResponse;
+    }
 
     public RechargeAction(int action, RechargeResponse rechargeResponse) {
         this.action = action;
@@ -100,5 +108,13 @@ public class RechargeAction {
 
     public void setRechargeResponse(RechargeResponse rechargeResponse) {
         this.rechargeResponse = rechargeResponse;
+    }
+
+    public GenarateOtpResponse getGenarateOtpResponse() {
+        return genarateOtpResponse;
+    }
+
+    public void setGenarateOtpResponse(GenarateOtpResponse genarateOtpResponse) {
+        this.genarateOtpResponse = genarateOtpResponse;
     }
 }

@@ -43,7 +43,7 @@ import okhttp3.RequestBody;
 public class RechargeViewmodel extends AndroidViewModel implements Observable {
     public RechargeViewmodel(@NonNull Application application) {
         super(application);
-        this.application=application;
+        this.application = application;
         repository = RechargeRepository.getInstance();
         disposable = new CompositeDisposable();
         mAction = new MutableLiveData<>();
@@ -51,8 +51,8 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
         repository.setDisposable(disposable);
         repository.setmAction(mAction);
         initSpinner();
-        sharedPreferences= application.getSharedPreferences("com.finwin.cristal.custmate",Context.MODE_PRIVATE);
-        editor= sharedPreferences.edit();
+        sharedPreferences = application.getSharedPreferences("com.finwin.cristal.custmate", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
     }
 
@@ -60,6 +60,7 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
     SharedPreferences.Editor editor;
 
     Application application;
+
     private void initSpinner() {
         listCircle.clear();
         listOperator.clear();
@@ -114,6 +115,7 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
             loading = null;
         }
     }
+
     @Bindable
     public int getSelectedOperator() {
         return selectedOperator;
@@ -154,7 +156,7 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
         Map<String, String> params = new HashMap<>();
         Map<String, String> items = new HashMap<>();
         items.put("account_no",
-                sharedPreferences.getString(ConstantClass.accountNumber,""));
+                sharedPreferences.getString(ConstantClass.accountNumber, ""));
 
         params.put("data", encr.conRevString(Enc_Utils.enValues(items)));
 
@@ -195,17 +197,24 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
         repository.validateMpin(apiInterface, body);
     }
 
+    public void generateOTP(Map<String, String> params) {
+
+        apiInterface = RetrofitClient.RetrofitClient().create(ApiInterface.class);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), (new JSONObject(params)).toString());
+        repository.generateOtp(apiInterface, body);
+    }
+
     public void recharge() {
 
         Map<String, String> params = new HashMap<>();
         Map<String, String> items = new HashMap<>();
 
-        items.put("account_no", sharedPreferences.getString(ConstantClass.accountNumber,""));
+        items.put("account_no", sharedPreferences.getString(ConstantClass.accountNumber, ""));
         items.put("agent_id", "0");
         items.put("amount", amount.get());
         items.put("circle", circle.get());
         items.put("customer_id",
-                sharedPreferences.getString(ConstantClass.custId,""));
+                sharedPreferences.getString(ConstantClass.custId, ""));
         items.put("mobile", mobileOrId.get());
         items.put("Operator", operator.get());
         items.put("recharge_type", operType.get());
@@ -232,23 +241,32 @@ public class RechargeViewmodel extends AndroidViewModel implements Observable {
     }
 
     public void clickProceed(View view) {
-        if ((amount.get().equals("")) || (mobileOrId.get().equals("")) || (circle.get().equals("-1")) || (operator.get().equals("-1"))) {
-            if (operator.get().equals("-1")) {
-                Snackbar.make(view, "Please select an Operator", Snackbar.LENGTH_LONG).show();
-            } else if (circle.get().equals("-1")) {
-                Snackbar.make(view, "Please select an Circle", Snackbar.LENGTH_LONG).show();
-            } else if (mobileOrId.get().equals("")) {
-                Snackbar.make(view, "Mobile number or Id cannot be empty!", Snackbar.LENGTH_LONG).show();
-            } else if (amount.get().equals("")) {
-                Snackbar.make(view, "Amount cannot be empty!", Snackbar.LENGTH_LONG).show();
-            }
-        }else
-        {
+        if ((!sharedPreferences.getString(ConstantClass.SCHEME, "").equals("SB"))) {
+            Toast.makeText(view.getContext(), "Please select a savings account", Toast.LENGTH_SHORT).show();
+        } else if (operator.get().equals("-1")) {
+            Snackbar.make(view, "Please select an Operator", Snackbar.LENGTH_LONG).show();
+        } else if (circle.get().equals("-1")) {
+            Snackbar.make(view, "Please select an Circle", Snackbar.LENGTH_LONG).show();
+        } else if (mobileOrId.get().equals("")) {
+            Snackbar.make(view, "Mobile number or Id cannot be empty!", Snackbar.LENGTH_LONG).show();
+        } else if (amount.get().equals("")) {
+            Snackbar.make(view, "Amount cannot be empty!", Snackbar.LENGTH_LONG).show();
+        } else {
 
-           // Toast.makeText(application, "Recharge not available right now!", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(application, "Recharge not available right now!", Toast.LENGTH_SHORT).show();
 
             mAction.setValue(new RechargeAction(RechargeAction.CLICK_PROCEED));
         }
 
+    }
+
+    public void clearData()
+    {
+        operator.set("");
+        mobileOrId.set("");
+        circle.set("");
+        setSelectedCircle(0);
+        setSelectedOperator(0);
+        amount.set("");
     }
 }

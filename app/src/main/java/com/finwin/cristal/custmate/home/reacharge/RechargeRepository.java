@@ -3,10 +3,12 @@ package com.finwin.cristal.custmate.home.reacharge;
 import androidx.lifecycle.MutableLiveData;
 
 import com.finwin.cristal.custmate.SupportingClass.Enc_crypter;
+import com.finwin.cristal.custmate.home.neftImps.neft.NeftAction;
 import com.finwin.cristal.custmate.home.reacharge.action.RechargeAction;
 import com.finwin.cristal.custmate.home.reacharge.pojo.RechargeResponse;
 import com.finwin.cristal.custmate.home.reacharge.pojo.get_circle_response.GetCircleResponse;
 import com.finwin.cristal.custmate.home.reacharge.pojo.get_operator_response.GetOperatorResponse;
+import com.finwin.cristal.custmate.home.transfer.fund_transfer_account.pojo.genarate_otp.GenarateOtpResponse;
 import com.finwin.cristal.custmate.home.transfer.fund_transfer_account.pojo.validate_mpin.ValidateMpinResponse;
 import com.finwin.cristal.custmate.pojo.Response;
 import com.finwin.cristal.custmate.retrofit.ApiInterface;
@@ -24,6 +26,8 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.RequestBody;
+
+import static com.finwin.cristal.custmate.SupportingClass.Enc_Utils.decValues;
 
 public class RechargeRepository {
 
@@ -229,6 +233,57 @@ public class RechargeRepository {
                         } else if (e instanceof UnknownHostException) {
                             mAction.setValue(new RechargeAction(RechargeAction.API_ERROR, "No Internet"));
                         } else {
+                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR, e.getMessage()));
+                        }
+                    }
+                });
+    }
+
+    public void generateOtp(ApiInterface apiInterface, RequestBody body) {
+        Single<Response> call = apiInterface.generateOtp(body);
+        call.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Response response) {
+
+                        try {
+                            String data=decValues(encr.revDecString(response.getData()));
+                            data=decValues(encr.revDecString(response.getData()));
+                            Gson gson = new GsonBuilder().create();
+                            GenarateOtpResponse genarateOtpResponse = gson.fromJson(data, GenarateOtpResponse.class);
+
+                            if (genarateOtpResponse.getOtp()!=null)
+                            {
+                                mAction.setValue(new RechargeAction(RechargeAction.GENERATE_OTP_SUCCESS,genarateOtpResponse));
+                            }
+                            else
+                            {
+                                String error=genarateOtpResponse.getError();
+                                mAction.setValue(new RechargeAction(RechargeAction.API_ERROR,error));
+                            }
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        if (e instanceof SocketTimeoutException)
+                        {
+                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR,"Timeout! Please try again later"));
+                        }else if (e instanceof UnknownHostException)
+                        {
+                            mAction.setValue(new RechargeAction(RechargeAction.API_ERROR,"No Internet"));
+                        }else {
                             mAction.setValue(new RechargeAction(RechargeAction.API_ERROR, e.getMessage()));
                         }
                     }

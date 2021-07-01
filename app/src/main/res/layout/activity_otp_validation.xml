@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.finwin.cristal.custmate.home.reacharge.otp_validation.OtpValidationViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="60dp">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="-5dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Enter your otp"
+                    android:textColor="@color/grey_two" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="94.3dp"
+                        android:layout_marginLeft="37.7dp"
+                        android:layout_marginRight="37.7dp"
+                        android:layout_marginTop="15dp"
+                        android:elevation="5dp"
+                        app:cardCornerRadius="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <!--<customfonts.MyTextView_Roboto_Regular-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:fontFamily="sans-serif"-->
+                            <!--android:paddingStart="23.3dp"-->
+                            <!--android:paddingTop="16.7dp"-->
+                            <!--android:text="@string/neft_otp"-->
+                            <!--android:textColor="@color/grey_two"-->
+                            <!--android:textSize="15sp"-->
+                            <!--android:textStyle="normal" />-->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginStart="13.3dp"-->
+                                <!--android:fontFamily="sans-serif-condensed"-->
+                                <!--android:text="@string/rs"-->
+                                <!--android:textSize="25sp"-->
+                                <!--android:textStyle="normal" />-->
+
+                                <EditText
+                                    android:id="@+id/edt_trnsfr_otp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="13.3dp"
+                                    android:layout_marginStart="13.3dp"
+                                    android:background="@color/transparent"
+                                    android:fontFamily="sans-serif-light"
+                                    android:gravity="center"
+                                    android:hint="OTP"
+                                    android:inputType="numberDecimal"
+                                    android:text="@={viewModel.etOtp}"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textColorHint="@color/geryTxt_hint"
+                                    android:textSize="25sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:onClick="@{viewModel::clickResendOtp}"
+                        android:id="@+id/tv_resend_otp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="35dp"
+                        android:layout_marginTop="35dp"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:paddingEnd="20dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:text="Resend OTP"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:onClick="@{viewModel::clickRecharge}"
+                        android:id="@+id/btn_trnsfr_snd_otp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="37.7dp"
+                        android:layout_marginRight="37.7dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/bg_sign_in_button"
+                        android:gravity="center"
+                        android:paddingLeft="60dp"
+                        android:paddingRight="60dp"
+                        android:text="Recharge"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

@@ -20,23 +20,29 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name="com.finwin.cristal.custmate.home.transfer.view_beneficiary_list.BeneficiaryListActivity"
-            android:fitsSystemWindows="true"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.finwin.cristal.custmate.sign_up.otp.SignupOtpActivity"
-            android:fitsSystemWindows="true"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.finwin.cristal.custmate.activity_main.ActivityMain"
-            android:fitsSystemWindows="true"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.finwin.cristal.custmate.home.transfer.view_recent_transfers.transaction_details.TransactionDetailsActivity"
-            android:fitsSystemWindows="true"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.finwin.cristal.custmate.home.transfer.view_recent_transfers.RecentTransfersActivity"
-            android:fitsSystemWindows="true"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".home.reacharge.otp_validation.OtpValidationActivity"></activity>
         <activity
-            android:name="com.finwin.cristal.custmate.ActivityInitial"
+            android:name=".home.transfer.view_beneficiary_list.BeneficiaryListActivity"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sign_up.otp.SignupOtpActivity"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_main.ActivityMain"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.transfer.view_recent_transfers.transaction_details.TransactionDetailsActivity"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.transfer.view_recent_transfers.RecentTransfersActivity"
+            android:fitsSystemWindows="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityInitial"
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -46,23 +52,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.finwin.cristal.custmate.sign_up.sign_up.SignUpActivity"
+            android:name=".sign_up.sign_up.SignUpActivity"
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.finwin.cristal.custmate.home.FundTransferReceipt"
+            android:name=".home.FundTransferReceipt"
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.finwin.cristal.custmate.home.transfer.transfer_account_otp.FundTransferAccOTP"
+            android:name=".home.transfer.transfer_account_otp.FundTransferAccOTP"
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.finwin.cristal.custmate.home.reacharge.RechargeFragmentReceipt"
+            android:name=".home.reacharge.RechargeFragmentReceipt"
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.finwin.cristal.custmate.home.transfer.search_beneficiary.SearchBeneficiary"
+            android:name=".home.transfer.search_beneficiary.SearchBeneficiary"
             android:fitsSystemWindows="true"
             android:screenOrientation="portrait" />
     </application>

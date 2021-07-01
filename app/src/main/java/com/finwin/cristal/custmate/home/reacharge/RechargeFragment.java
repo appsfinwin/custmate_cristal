@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,7 @@ import com.finwin.cristal.custmate.SupportingClass.Enc_crypter;
 
 import com.finwin.cristal.custmate.databinding.FrgRechargeBinding;
 import com.finwin.cristal.custmate.home.reacharge.action.RechargeAction;
+import com.finwin.cristal.custmate.home.reacharge.otp_validation.OtpValidationActivity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -99,6 +101,7 @@ public class RechargeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewmodel.clearData();
         final List<String> lisType = Arrays.asList(ConstantClass.masterTypArrayID);
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -107,6 +110,7 @@ public class RechargeFragment extends Fragment {
                 case "MOB": //Prepaid
                     operType = lisType.get(0);
                     viewmodel.operType.set(operType);
+                    binding.edtMobOrId.setInputType(InputType.TYPE_CLASS_NUMBER);
                     binding.txtRecrgType.setText(R.string.mob_recharge);
                     binding.txtRecrgStatus.setVisibility(View.GONE);
                     binding.linrPrePost.setVisibility(View.VISIBLE);
@@ -116,6 +120,7 @@ public class RechargeFragment extends Fragment {
                 case "DATA":    //Data Recharge
                     operType = lisType.get(2);
                     viewmodel.operType.set(operType);
+                    binding.edtMobOrId.setInputType(InputType.TYPE_CLASS_TEXT);
                     binding.txtRecrgType.setText(R.string.data_recharge);
                     binding.txtRecrgStatus.setVisibility(View.GONE);
                     binding.linrPrePost.setVisibility(View.VISIBLE);
@@ -124,6 +129,7 @@ public class RechargeFragment extends Fragment {
 
                 case "DTH": //DTH Recharge
                     operType = lisType.get(4);
+                    binding.edtMobOrId.setInputType(InputType.TYPE_CLASS_TEXT);
                     viewmodel.operType.set(operType);
                     binding.txtRecrgType.setText(R.string.recharge);
                     binding.txtRecrgStatus.setVisibility(View.VISIBLE);
@@ -134,6 +140,7 @@ public class RechargeFragment extends Fragment {
 
                 case "LAND":    //Landline
                     operType = lisType.get(3);
+                    binding.edtMobOrId.setInputType(InputType.TYPE_CLASS_NUMBER);
                     viewmodel.operType.set(operType);
                     binding.txtRecrgType.setText(R.string.recharge);
                     binding.txtRecrgStatus.setVisibility(View.VISIBLE);
@@ -144,6 +151,7 @@ public class RechargeFragment extends Fragment {
 
                 case "LAND_BROAD":  //Broadband
                     operType = lisType.get(3);
+                    binding.edtMobOrId.setInputType(InputType.TYPE_CLASS_TEXT);
                     viewmodel.operType.set(operType);
                     binding.txtRecrgType.setText(R.string.recharge);
                     binding.txtRecrgStatus.setVisibility(View.VISIBLE);
@@ -174,7 +182,21 @@ public class RechargeFragment extends Fragment {
                         if (rechargeAction.validateMpinResponse.getValue()) {
                             mpinDialog.dismiss();
                             viewmodel.initLoading(getActivity());
-                            viewmodel.recharge();
+                            //viewmodel.recharge();
+                            Map<String, String> params = new HashMap<>();
+                            Map<String, String> items = new HashMap<>();
+                            items.put("particular", "mob");
+                            items.put("account_no",
+                                    sharedPreferences.getString(ConstantClass.accountNumber,""));
+                            items.put("amount", viewmodel.amount.get());
+                            items.put("agent_id",
+                                    sharedPreferences.getString(ConstantClass.custId,""));
+                            params.put("data", encr.conRevString(Enc_Utils.enValues(items)));
+
+                            Log.e("OTPGenerate: ", String.valueOf(items));
+                            Log.e("OTPGenerate data", String.valueOf(params));
+
+                            viewmodel.generateOTP(params);
                         } else {
                             Toast.makeText(getActivity(), "Invalid MPIN", Toast.LENGTH_SHORT).show();
                         }
@@ -207,6 +229,22 @@ public class RechargeFragment extends Fragment {
                     case RechargeAction.CLICK_PROCEED:
 
                         verifyMpin();
+                        break;
+
+                        case RechargeAction.GENERATE_OTP_SUCCESS:
+
+                            Intent Otpntent = new Intent(getActivity(), OtpValidationActivity.class);
+                            Otpntent.putExtra("account_no", sharedPreferences.getString(ConstantClass.accountNumber,""));
+                            Otpntent.putExtra("agent_id", "0");
+                            Otpntent.putExtra("amount", viewmodel.amount.get());
+                            Otpntent.putExtra("circle",viewmodel. circle.get());
+                            Otpntent.putExtra("customer_id",
+                                    sharedPreferences.getString(ConstantClass.custId,""));
+                            Otpntent.putExtra("mobile", viewmodel.mobileOrId.get());
+                            Otpntent.putExtra("Operator", viewmodel.operator.get());
+                            Otpntent.putExtra("recharge_type", viewmodel.operType.get());
+                            Otpntent.putExtra("otp_id", rechargeAction.genarateOtpResponse.getOtp().getOtpId());
+                            startActivity(Otpntent);
                         break;
                 }
             }
